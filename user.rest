@@ -1,0 +1,43 @@
+### sign up
+post http://127.0.0.1:8086/api/signup
+Content-Type: application/json
+
+{
+    "fullname": "jack",
+    "email": "jack@gmail.com",
+    "workspace": "test",
+    "password": "123456"
+}
+
+### sign up test 1
+post http://127.0.0.1:8086/api/signup
+Content-Type: application/json
+
+{
+    "fullname": "jack1",
+    "email": "jack1@gmail.com",
+    "workspace": "test",
+    "password": "123456"
+}
+
+### sign up test 2
+post http://127.0.0.1:8086/api/signup
+Content-Type: application/json
+
+{
+    "fullname": "jack2",
+    "email": "jack2@gmail.com",
+    "workspace": "test",
+    "password": "123456"
+}
+
+### sign up test 3
+post http://127.0.0.1:8086/api/signup
+Content-Type: application/json
+
+{
+    "fullname": "jack3",
+    "email": "jack3@gmail.com",
+    "workspace": "test",
+    "password": "123456"
+}

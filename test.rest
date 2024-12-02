@@ -1,0 +1,113 @@
+### index
+get http://127.0.0.1:8086/
+
+
+#######################################
+### sign in
+# @name signin
+post http://127.0.0.1:8086/api/signin
+Content-Type: application/json
+
+{
+    "email": "jack@gmail.com",
+    "password": "123456"
+}
+
+### sign in jack2
+# @name signin
+post http://127.0.0.1:8086/api/signin
+Content-Type: application/json
+
+{
+    "email": "jack2@gmail.com",
+    "password": "123456"
+}
+
+@token = {{signin.response.body.token}}
+
+### get user info
+get http://127.0.0.1:8086/api/userinfo
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### list all users
+get http://127.0.0.1:8086/api/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### create group chat
+post http://127.0.0.1:8086/api/chats
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "test chat new b",
+    "chat_type": "public_channel",
+    "members": [1, 2, 3]
+}
+
+### create single chat
+post http://127.0.0.1:8086/api/chats
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "",
+    "chat_type": "single",
+    "members": [1, 2]
+}
+
+### list chats
+get http://127.0.0.1:8086/api/chats
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### delete chat
+delete http://127.0.0.1:8086/api/chats/3
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### send message
+post http://127.0.0.1:8086/api/chats/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "content": "this is a test message"
+}
+
+### monitor
+post http://127.0.0.1:8086/api/events
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### list messages
+get http://127.0.0.1:8086/api/chats/1/messages?limit=10
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### send messages
+post http://127.0.0.1:8086/api/chats/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "content": "this is a test message"
+}
+
+### upload file
+post http://127.0.0.1:8086/api/upload
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; filename="1.png"
+Content-Type: application/octet-stream
+
+< /Users/wxc/Downloads/1.png
+--MyBoundary
+Content-Disposition: form-data; filename="2.png"
+Content-Type: application/octet-stream
+
+< /Users/wxc/Downloads/2.png
+--MyBoundary--

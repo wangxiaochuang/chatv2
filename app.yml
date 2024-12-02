@@ -1,0 +1,14 @@
+server:
+  host: 0.0.0.0
+  port: 8086
+  db_url: postgres://postgres:postgres@localhost:5432/chatv2
+  upload_base_dir: /tmp/uploads
+auth:
+  sk: |
+    -----BEGIN PRIVATE KEY-----
+    MC4CAQAwBQYDK2VwBCIEIJL4hlV1fEGZHFLkhQ99g7MwDwJ+DwXfYZv18fLcj07y
+    -----END PRIVATE KEY-----
+  pk: |
+    -----BEGIN PUBLIC KEY-----
+    MCowBQYDK2VwAyEA9Q0GlRpk0eQY/35d414jJ9l6k5xH1SDKCQwg6z/lTmQ=
+    -----END PUBLIC KEY-----

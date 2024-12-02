@@ -1,0 +1,57 @@
+### sign in
+# @name signin
+post http://127.0.0.1:8086/api/signin
+Content-Type: application/json
+
+{
+    "email": "jack@gmail.com",
+    "password": "123456"
+}
+
+@token = {{signin.response.body.token}}
+
+### create chat
+post http://127.0.0.1:8086/api/chats
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "test chat new b",
+    "chat_type": "public_channel",
+    "members": [1, 2]
+}
+
+### update chat 1
+patch http://127.0.0.1:8086/api/chats/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "test chat new c",
+    "chat_type": "public_channel",
+    "members": [1, 2, 3]
+}
+
+### list chats
+get http://127.0.0.1:8086/api/chats
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### delete chat
+delete http://127.0.0.1:8086/api/chats/3
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### send message
+post http://127.0.0.1:8086/api/chats/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "content": "this is a test message"
+}
+
+### monitor
+post http://127.0.0.1:8086/api/events
+Content-Type: application/json
+Authorization: Bearer {{token}}
